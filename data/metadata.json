@@ -1,1 +1,1 @@
-text
+{"type":"array","items":{"type":"object","id":"urn:jsonschema:com:example:morenkov:pojo:Account","properties":{"id":{"type":"string"},"name":{"type":"string"},"currency":{"type":"string"},"balance":{"type":"number"}}}}

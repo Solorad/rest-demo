@@ -43,9 +43,9 @@ public class AccountRestService {
     
 
     @GET
-    @Path("/{param}")
+    @Path("/{accountId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAccount(@PathParam("param") String accountId) {
+    public Response getAccount(@PathParam("accountId") String accountId) {
         log.info("getAccount '{}' method started", accountId);
         Optional<Account> accountOptional = accountService.getAccountById(accountId);
         return accountOptional.map(account -> ok(account).build())
@@ -65,11 +65,12 @@ public class AccountRestService {
     }
 
     @PATCH
+    @Path("/{accountId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateAccount(Account account) {
+    public Response updateAccount(@PathParam("accountId") String accountId, Account account) {
         try {
-            log.info("updateAccount '{}' method started", account);
-            accountService.updateAccount(account);
+            log.info("updateAccount for id = '{}' with data = '{}' method started", accountId, account);
+            accountService.updateAccount(accountId, account);
             return ok().build();
         } catch (AccountStoreException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Invalid Request body").build();

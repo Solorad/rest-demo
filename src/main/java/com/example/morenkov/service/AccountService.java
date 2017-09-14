@@ -80,17 +80,17 @@ public class AccountService {
         }
     }
 
-    public void updateAccount(Account account) throws AccountStoreException {
-        if (account == null || StringUtils.isEmpty(account.getId())) {
+    public void updateAccount(String accountId, Account account) throws AccountStoreException {
+        if (account == null || StringUtils.isEmpty(accountId)) {
             log.error("Error on account creation.");
             throw new AccountStoreException("Error on account update.");
         }
         writeLock.lock();
         try {
             List<Account> accounts = getAll();
-            Optional<Account> storedAccountOptional = getAccountInList(account.getId(), accounts);
+            Optional<Account> storedAccountOptional = getAccountInList(accountId, accounts);
             if (!storedAccountOptional.isPresent()) {
-                throw new AccountStoreException("Account with id " + account.getId() + " was not found");
+                throw new AccountStoreException("Account with id " + accountId + " was not found");
             }
             Account storedAccount = storedAccountOptional.get();
             // I could easily update storedAccount and save list, but here is the only place where I can use
