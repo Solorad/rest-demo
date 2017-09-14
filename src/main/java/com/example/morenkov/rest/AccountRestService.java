@@ -73,7 +73,7 @@ public class AccountRestService {
             accountService.updateAccount(accountId, account);
             return ok().build();
         } catch (AccountStoreException e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Invalid Request body").build();
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 }
