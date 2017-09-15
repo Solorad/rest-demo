@@ -80,7 +80,7 @@ public class AccountService {
         }
     }
 
-    public void updateAccount(String accountId, Account account) throws AccountStoreException {
+    public Account updateAccount(String accountId, Account account) throws AccountStoreException {
         if (account == null || StringUtils.isEmpty(accountId)) {
             log.error("Error on account creation.");
             throw new AccountStoreException("Error on account update.");
@@ -104,6 +104,7 @@ public class AccountService {
                     .build();
             accounts.add(updatedAccount);
             rewriteFile(accounts);
+            return updatedAccount;
         } finally {
             writeLock.unlock();
         }

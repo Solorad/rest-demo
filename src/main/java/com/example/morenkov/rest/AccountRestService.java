@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import java.util.Optional;
 
 import static javax.ws.rs.core.Response.ok;
@@ -40,7 +39,7 @@ public class AccountRestService {
         log.info("getAll method started");
         return ok(accountService.getAll()).build();
     }
-    
+
 
     @GET
     @Path("/{accountId}")
@@ -66,14 +65,10 @@ public class AccountRestService {
 
     @PATCH
     @Path("/{accountId}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateAccount(@PathParam("accountId") String accountId, Account account) {
-        try {
-            log.info("updateAccount for id = '{}' with data = '{}' method started", accountId, account);
-            accountService.updateAccount(accountId, account);
-            return ok().build();
-        } catch (AccountStoreException e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Invalid Request body").build();
-        }
+    @Consumes(MediaType.APPLICATION_JSON_PATCH_JSON)
+    public Account updateAccount(@PathParam("accountId") String accountId, Account account)
+            throws AccountStoreException {
+        log.info("updateAccount for id = '{}' with data = '{}' method started", accountId, account);
+        return accountService.updateAccount(accountId, account);
     }
 }

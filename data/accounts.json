@@ -1,9 +1,4 @@
 [ {
-  "id" : "d169734a-df6e-4035-b342-0229f556f8fd",
-  "name" : "Vova",
-  "currency" : "USD",
-  "balance" : 48.57
-}, {
   "id" : "1df98e37-4a15-43f5-9a63-923127b82c70",
   "name" : "Yulya",
   "currency" : "GBP",
@@ -13,4 +8,9 @@
   "name" : "Tosya",
   "currency" : "EUR",
   "balance" : 10000.57
+}, {
+  "id" : "d169734a-df6e-4035-b342-0229f556f8fd",
+  "name" : "ivan",
+  "currency" : "USD",
+  "balance" : 8889
 } ]

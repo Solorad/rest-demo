@@ -17,5 +17,7 @@ public class JerseyConfig extends ResourceConfig {
         this.register(AccountRestService.class);
         // Access through /<Jersey's servlet path>/application.wadl
         this.register(WadlResource.class);
+        this.register(OptionsAcceptPatchHeaderFilter.class);
+        this.register(PatchingInterceptor.class);
     }
 }
