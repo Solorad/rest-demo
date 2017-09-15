@@ -13,4 +13,9 @@
   "name" : "ivan",
   "currency" : "USD",
   "balance" : 8889
+}, {
+  "id" : "562c7b51-431d-4f39-870b-a0fc4aad22a9",
+  "name" : "Tima",
+  "currency" : "RUB",
+  "balance" : 8889
 } ]

@@ -42,6 +42,10 @@ public class PatchingInterceptor implements ReaderInterceptor {
             throws IOException, WebApplicationException {
         // retrieve account by calling
         try {
+            // check for POST request
+            if (uriInfo.getPathParameters().size() == 0) {
+                return readerInterceptorContext.proceed();
+            }
             Object resource = uriInfo.getMatchedResources().get(0);
             String accountId = uriInfo.getPathParameters().get("accountId").get(0);
             Method getAccountMethod = resource.getClass().getDeclaredMethod("getAccount", String.class);

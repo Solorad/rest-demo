@@ -49,7 +49,7 @@ public class AccountRestService {
         log.info("getAccount '{}' method started", accountId);
         Optional<Account> accountOptional = accountService.getAccountById(accountId);
         return accountOptional.map(account -> ok(account).build())
-                .orElseGet(() -> Response.status(Response.Status.NOT_FOUND).entity("account was not found").build());
+                .orElseGet(() -> Response.status(Response.Status.NOT_FOUND).build());
     }
 
     @POST
